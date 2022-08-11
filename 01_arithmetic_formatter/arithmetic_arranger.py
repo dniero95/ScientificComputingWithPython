@@ -8,9 +8,14 @@ def arithmetic_arranger(problems):
     for problem in problems:
         split_problem = problem.split(' ')
         problems[problems.index(problem)] = split_problem
-        # Test if the operator are only + or -
+
+        # Test if the operators are only + or -
         if not split_problem[1] in ['+', '-']:
             return "Error: Operator must be \'+\' or \'-\'."
+
+        # Test if the operands contain only digit
+        if split_problem[0].isdigit() and split_problem[2].isdigit():
+            return 'Error: Numbers must only contain digits.'
 
 
     final_first_line = ''
