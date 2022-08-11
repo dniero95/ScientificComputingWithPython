@@ -1,4 +1,10 @@
 def arithmetic_arranger(problems):
+    # Check for error
+
+    if len(problems) > 5:
+        return 'Error: Too many problems.'
+
+
     # I turn the elements of the list problem into list of string where each element of the sublist is a string.
     for problem in problems:
         problems[problems.index(problem)] = problem.split(' ')
