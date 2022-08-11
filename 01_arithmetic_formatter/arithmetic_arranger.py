@@ -3,22 +3,31 @@ def arithmetic_arranger(problems):
     for problem in problems:
         problems[problems.index(problem)] = problem.split(' ')
 
-    first_line = ''
-    second_line = ''
-    third_line = ''
+    final_first_line = ''
+    final_second_line = ''
+    final_third_line = ''
+
+
     for problem in problems:
-        temp_third_line = ''
-        first_line += f'{problem[0]}\t'
-        second_line += f'{problem[1]} {problem[2]}\t'
 
-        while len(temp_third_line) < max(len(problem[0]), len(second_line.strip())):
-            temp_third_line += '-'
+        first_line = f'{problem[0]}'
+        second_line = f'{problem[1]} {problem[2]}'
 
-        third_line += temp_third_line + '\t'
+        # Make the two line of the same len
+        if len(first_line) < len(second_line):
+            while len(first_line) < len(second_line):
+                first_line = f' {first_line}'
+        elif len(first_line) > len(second_line):
+            while len(first_line) > len(second_line):
+                second_line = f'{second_line[0]} {second_line[1:]}'
 
-    print(first_line)
-    print(second_line)
-    print(third_line)
+        third_line = ''
+        while len(third_line) < len(second_line):
+            third_line = f'{third_line}-'
 
-    arranged_problems = ''
+        final_first_line += f'{first_line}\t'
+        final_second_line += f'{second_line}\t'
+        final_third_line += f'{third_line}\t'
+
+    arranged_problems = f'{final_first_line.rstrip()}\n{final_second_line.rstrip()}\n{final_third_line.rstrip()}'
     return arranged_problems
