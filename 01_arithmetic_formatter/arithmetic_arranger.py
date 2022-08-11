@@ -1,13 +1,17 @@
 def arithmetic_arranger(problems):
-    # Check for error
+    # Test if the list has more than 5 problems
 
     if len(problems) > 5:
         return 'Error: Too many problems.'
 
-
     # I turn the elements of the list problem into list of string where each element of the sublist is a string.
     for problem in problems:
-        problems[problems.index(problem)] = problem.split(' ')
+        split_problem = problem.split(' ')
+        problems[problems.index(problem)] = split_problem
+        # Test if the operator are only + or -
+        if not split_problem[1] in ['+', '-']:
+            return "Error: Operator must be \'+\' or \'-\'."
+
 
     final_first_line = ''
     final_second_line = ''
