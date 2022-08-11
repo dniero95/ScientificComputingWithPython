@@ -30,8 +30,13 @@ def arithmetic_arranger(problems):
 
     for problem in problems:
 
-        first_line = f'{problem[0]}'
-        second_line = f'{problem[1]} {problem[2]}'
+        # put single space between the operator and the longest of the two operands
+        if len(problem[0]) <= len(problem[2]):
+            first_line = f'{problem[0]}'
+            second_line = f'{problem[1]} {problem[2]}'
+        else:
+            first_line = f'{problem[0]}'
+            second_line = f'{problem[1]}{" "*(len(problem[0])-len(problem[2])+1)}{problem[2]}'
 
         # Make the two line of the same len
         if len(first_line) < len(second_line):
@@ -45,9 +50,9 @@ def arithmetic_arranger(problems):
         while len(third_line) < len(second_line):
             third_line = f'{third_line}-'
 
-        final_first_line += f'{first_line}\t'
-        final_second_line += f'{second_line}\t'
-        final_third_line += f'{third_line}\t'
+        final_first_line += f'{first_line}    '
+        final_second_line += f'{second_line}    '
+        final_third_line += f'{third_line}    '
 
     arranged_problems = f'{final_first_line.rstrip()}\n{final_second_line.rstrip()}\n{final_third_line.rstrip()}'
     return arranged_problems
