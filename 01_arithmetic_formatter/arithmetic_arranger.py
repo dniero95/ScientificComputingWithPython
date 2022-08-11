@@ -14,8 +14,13 @@ def arithmetic_arranger(problems):
             return "Error: Operator must be \'+\' or \'-\'."
 
         # Test if the operands contain only digit
-        if split_problem[0].isdigit() and split_problem[2].isdigit():
+        if not (split_problem[0].isdigit() and split_problem[2].isdigit()):
             return 'Error: Numbers must only contain digits.'
+
+        # Test if the len of each operands' is more than 4
+
+        if len(split_problem[0]) > 4 or len(split_problem[2]) > 4:
+            return 'Error: Numbers cannot be more than four digits.'
 
 
     final_first_line = ''
