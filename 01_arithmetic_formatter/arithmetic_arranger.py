@@ -1,4 +1,4 @@
-def arithmetic_arranger(problems):
+def arithmetic_arranger(problems, show_results = False):
     # Test if the list has more than 5 problems
 
     if len(problems) > 5:
@@ -13,7 +13,7 @@ def arithmetic_arranger(problems):
         if not split_problem[1] in ['+', '-']:
             return "Error: Operator must be \'+\' or \'-\'."
 
-        # Test if the operands contain only digit
+
         if not (split_problem[0].isdigit() and split_problem[2].isdigit()):
             return 'Error: Numbers must only contain digits.'
 
@@ -26,6 +26,7 @@ def arithmetic_arranger(problems):
     final_first_line = ''
     final_second_line = ''
     final_third_line = ''
+    final_fourth_line = ''
 
 
     for problem in problems:
@@ -53,6 +54,18 @@ def arithmetic_arranger(problems):
         final_first_line += f'{first_line}    '
         final_second_line += f'{second_line}    '
         final_third_line += f'{third_line}    '
+
+        # Menage optional parameter
+
+    if show_results == True:
+        for problem in problems:
+            result = int(problem[0]) + int(problem[2]) if problem[1] == '+' else int(problem[0]) - int(problem[2]) # I use the ternary operator to differ add from sub
+            final_fourth_line += f'{" "*(len(first_line)-len(str(result)))}{result}    '
+
+        arranged_problems = f'{final_first_line.rstrip()}\n{final_second_line.rstrip()}\n{final_third_line.rstrip()}\n{final_fourth_line.rstrip()}'
+        return arranged_problems
+
+
 
     arranged_problems = f'{final_first_line.rstrip()}\n{final_second_line.rstrip()}\n{final_third_line.rstrip()}'
     return arranged_problems
