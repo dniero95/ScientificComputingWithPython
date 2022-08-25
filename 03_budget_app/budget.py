@@ -10,6 +10,13 @@ class Category:
                 "description": description
             })
 
+    def withdraw(self, amount, description = ''):
+        self.ledger.append(
+            {
+                "amount": - amount,
+                "description": description
+            })
+
 
 
 # def create_spend_chart(categories):
