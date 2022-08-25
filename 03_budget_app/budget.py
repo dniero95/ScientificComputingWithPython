@@ -17,6 +17,15 @@ class Category:
                 "description": description
             })
 
+    def get_balance(self):
+        balance = 0
+        for transaction in self.ledger:
+            balance += transaction['amount']
+        return balance
+
+    def transfer(self):
+        pass
+
 
 
 # def create_spend_chart(categories):
