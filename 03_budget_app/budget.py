@@ -52,20 +52,25 @@ class Category:
     def __str__(self):
         description = f''
         for transaction in self.ledger:
-            amount_len = len(str(transaction["description"]))
-            if len(transaction["description"]) >= 23:
+            amount_string = f'{float(transaction["amount"]):.2f}'
+            amount_len = len(amount_string)
+
+
+            description_len = len(transaction["description"])
+            if description_len >= 23:
                 text = transaction["description"][:23]
+                description_len = 23
             else:
                 text = transaction["description"]
-            text_len = len(text)
+            whitespace = 30 - description_len - amount_len
 
-            description = f'{description}{text}{" " * (30 - (text_len + amount_len + 3))}{float(transaction["amount"])}'
-        return f'{self.name.center(30, "*")}\n{description}'
+            description = f'{description}{text}{" "*whitespace}{amount_string}\n'
+        return f'{self.name.center(30, "*")}\n{description}Total: {self.get_balance():.2f}'
 
     # representation of the obj
 
     def __repr__(self):
         return f'{self.__class__.__name__}({self.name})'
 
-def create_spend_chart(categories):
+def create_spend_chart(categories:list)->str:
     pass
