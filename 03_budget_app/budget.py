@@ -58,7 +58,8 @@ class Category:
             else:
                 text = transaction["description"]
             text_len = len(text)
-            description = f'{description}\n{text}{" " * (30 - (text_len + amount_len + 3))}{float(transaction["amount"]):f.2}'
+
+            description = f'{description}{text}{" " * (30 - (text_len + amount_len + 3))}{float(transaction["amount"])}'
         return f'{self.name.center(30, "*")}\n{description}'
 
     # representation of the obj
@@ -66,4 +67,5 @@ class Category:
     def __repr__(self):
         return f'{self.__class__.__name__}({self.name})'
 
-# def create_spend_chart(categories):
+def create_spend_chart(categories):
+    pass
