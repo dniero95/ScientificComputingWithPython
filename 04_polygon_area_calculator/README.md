@@ -1,5 +1,7 @@
 # Polygon Area Calculator
 
+## Exercise requirements
+
 In this project you will use object oriented programming to create a Rectangle class and a Square class. The Square class should be a subclass of Rectangle and inherit methods and attributes.
 
 ## Rectangle class
@@ -75,5 +77,4 @@ Write your code in shape_calculator.py. For development, you can use main.py to 
 ## Testing
 We imported the tests from test_module.py to main.py for your convenience. The tests will run automatically whenever you hit the "run" button.
 
-## Submitting
-Copy your project's URL and submit it to freeCodeCamp.
+## Approach to solutions

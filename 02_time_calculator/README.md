@@ -1,5 +1,7 @@
 # Time Calculator
 
+## Exercise requirements
+
 Write a function named ```add_time``` that takes in two required parameters and one optional parameter:
 
 - a start time in the 12-hour clock format (ending in AM 
@@ -43,3 +45,5 @@ Write your code in ```time_calculator.py```. For development, you can use ```mai
 ### Testing
 
 The unit tests for this project are in ```test_module.py```. We imported the tests from ```test_module.py``` to ```main.py``` for your convenience. The tests will run automatically whenever you hit the "run" button.
+
+## Approach to solutions
