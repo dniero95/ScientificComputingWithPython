@@ -57,11 +57,14 @@ def arithmetic_arranger(problems, show_results = False):
 
         # Menage optional parameter
 
-    if show_results == True:
-        for problem in problems:
+        if show_results == True:
+
             result = int(problem[0]) + int(problem[2]) if problem[1] == '+' else int(problem[0]) - int(problem[2]) # I use the ternary operator to differ add from sub
+
+
             final_fourth_line += f'{" "*(len(first_line)-len(str(result)))}{result}    '
 
+    if show_results == True:
         arranged_problems = f'{final_first_line.rstrip()}\n{final_second_line.rstrip()}\n{final_third_line.rstrip()}\n{final_fourth_line.rstrip()}'
         return arranged_problems
 
