@@ -48,7 +48,6 @@ class Category:
         return True
 
     # string version of the obj
-
     def __str__(self):
         description = f''
         for transaction in self.ledger:
@@ -68,9 +67,36 @@ class Category:
         return f'{self.name.center(30, "*")}\n{description}Total: {self.get_balance():.2f}'
 
     # representation of the obj
-
     def __repr__(self):
         return f'{self.__class__.__name__}({self.name})'
 
 def create_spend_chart(categories:list)->str:
-    pass
+    # store the categories names in a list
+    categories_names = [category.name for category in categories]
+
+    # calculate the percentage
+    withdraws = []
+    for category in categories:
+        total_withdraw = 0
+        for transaction in category.ledger:
+            withdraw = float(transaction["amount"])
+            if withdraw < 0:
+                total_withdraw += withdraw
+        withdraws.append(total_withdraw)
+
+    total = sum(withdraws)
+    withdraws_percent = [int(abs((percent / total)*100)//10) for percent in withdraws]
+
+    title = 'Percentage spent by category\n'
+    percentages = ['100', ' 90', ' 80', ' 70', ' 60', ' 50' , ' 40', ' 30', ' 20', ' 10', '  0']
+    y_axis = ''
+    for index in range(len(percentages)):
+        y_axis = f'{y_axis}{percentages[index]}|\n'
+    x_axis = f'{" "*4}{"-"*((len(categories_names)*3)+1)}\n'
+    vertical_category_names = f''
+    for name in categories_names:
+
+    categories_description = f''
+
+    spend_chart_text = f'{title}{y_axis}{x_axis}'
+    print(spend_chart_text)
