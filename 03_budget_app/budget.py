@@ -91,12 +91,29 @@ def create_spend_chart(categories:list)->str:
     percentages = ['100', ' 90', ' 80', ' 70', ' 60', ' 50' , ' 40', ' 30', ' 20', ' 10', '  0']
     y_axis = ''
     for index in range(len(percentages)):
-        y_axis = f'{y_axis}{percentages[index]}|\n'
+        y_axis = f'{y_axis}{percentages[index]}|'
+        for withdraw_percent in withdraws_percent:
+            if int(percentages[index]) <= withdraw_percent * 10:
+                y_axis = f'{y_axis} o '
+        y_axis = f'{y_axis.rstrip()}\n'
     x_axis = f'{" "*4}{"-"*((len(categories_names)*3)+1)}\n'
-    vertical_category_names = f''
-    for name in categories_names:
+    categories_description = ''
+    index = 0
+    while True:
+        categories_description_line = f'{" "*5}'
+        breakout = 0
+        for name in categories_names:
+            if index < len(name):
+                categories_description_line = f'{categories_description_line}{name[index]}  '
+            else:
+                categories_description_line = f'{categories_description_line}   '
+                breakout += 1
+        categories_description = f'{categories_description}{categories_description_line.rstrip()}\n'
+        index += 1
+        if breakout == len(categories_names):
+            break
 
-    categories_description = f''
 
-    spend_chart_text = f'{title}{y_axis}{x_axis}'
+
+    spend_chart_text = f'{title}{y_axis}{x_axis}{categories_description}'
     print(spend_chart_text)
