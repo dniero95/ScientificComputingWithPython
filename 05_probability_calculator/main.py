@@ -16,5 +16,5 @@ hat = prob_calculator.Hat(blue=4, red=2, green=6)
 # main(module='test_module', exit=False)
 
 print(hat.balls)
-print(hat.draw(3))
+print(hat.draw(13))
 print(hat.balls)

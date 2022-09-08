@@ -21,6 +21,12 @@ class Hat:
 
     def draw(self, number_of_balls:int):
         drawn: list = []
+        # handle if you draw a nuber of balls equals or more than the balls in the hat
+        if number_of_balls >= len(self.balls):
+            drawn.extend(self.balls)
+            self.balls.clear()
+            return drawn
+
         for index in range(number_of_balls):
             draw = random.choice(self.balls)
             self.balls.remove(draw)
