@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Tkinter/bonus/04_whiteboard/.idea/04_whiteboard.iml" filepath="$PROJECT_DIR$/../Tkinter/bonus/04_whiteboard/.idea/04_whiteboard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../DataAnalysisWithPython/.idea/DataAnalysisWithPython.iml" filepath="$PROJECT_DIR$/../DataAnalysisWithPython/.idea/DataAnalysisWithPython.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../PythonPoliTo/.idea/PythonPoliTo.iml" filepath="$PROJECT_DIR$/../PythonPoliTo/.idea/PythonPoliTo.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ScientificComputingWithPython.iml" filepath="$PROJECT_DIR$/.idea/ScientificComputingWithPython.iml" />
     </modules>
   </component>

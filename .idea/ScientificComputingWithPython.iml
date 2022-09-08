@@ -4,5 +4,8 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="PythonPoliTo" />
+    <orderEntry type="module" module-name="04_whiteboard" />
+    <orderEntry type="module" module-name="DataAnalysisWithPython" />
   </component>
 </module>

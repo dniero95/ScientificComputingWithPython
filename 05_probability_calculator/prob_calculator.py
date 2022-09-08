@@ -20,7 +20,12 @@ class Hat:
     # This method draw from the hat a number of balls at random
 
     def draw(self, number_of_balls:int):
-        return random.choices(self.balls, k=number_of_balls)
+        drawn: list = []
+        for index in range(number_of_balls):
+            draw = random.choice(self.balls)
+            self.balls.remove(draw)
+            drawn.append(draw)
+        return drawn
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
     pass
