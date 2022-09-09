@@ -28,6 +28,7 @@ class Hat:
             return drawn
 
         for index in range(number_of_balls):
+
             draw = random.choice(self.contents)
             self.contents.remove(draw)
             drawn.append(draw)
@@ -37,14 +38,16 @@ def experiment(hat:Hat, expected_balls:dict, num_balls_drawn:int, num_experiment
     success = 0
     for index in range(num_experiments):
         experiment_hat = copy.deepcopy(hat)
+
         draw = experiment_hat.draw(num_balls_drawn)
         outcome = True
         for key, value in expected_balls.items():
-            if value != draw.count(key):
+            if value > draw.count(key):
                 outcome = False
 
         if  outcome:
             success += 1
-
-    return success/num_experiments
+            # print(success)
+    result = success/num_experiments
+    return result
 
