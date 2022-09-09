@@ -86,17 +86,23 @@ def create_spend_chart(categories:list)->str:
 
     total = sum(withdraws)
     withdraws_percent = [int(abs((percent / total)*100)//10) for percent in withdraws]
-
+    x_axis = f'{" "*4}{"-"*((len(categories_names)*3)+1)}\n'
+    x_axis_len = len(x_axis) - 1
+    whitespace = ' '
     title = 'Percentage spent by category\n'
     percentages = ['100', ' 90', ' 80', ' 70', ' 60', ' 50' , ' 40', ' 30', ' 20', ' 10', '  0']
     y_axis = ''
+
     for index in range(len(percentages)):
-        y_axis = f'{y_axis}{percentages[index]}|'
+        y_axis_line = f'{percentages[index]}|'
         for withdraw_percent in withdraws_percent:
             if int(percentages[index]) <= withdraw_percent * 10:
-                y_axis = f'{y_axis} o '
-        y_axis = f'{y_axis.rstrip()}\n'
-    x_axis = f'{" "*4}{"-"*((len(categories_names)*3)+1)}\n'
+                y_axis_line = f'{y_axis_line} o '
+            else:
+                y_axis_line = f'{y_axis_line}   '
+
+
+        y_axis = f'{y_axis}{y_axis_line}{whitespace*(x_axis_len - len(y_axis_line))}\n'
     categories_description = ''
     index = 0
     while True:
@@ -108,12 +114,14 @@ def create_spend_chart(categories:list)->str:
             else:
                 categories_description_line = f'{categories_description_line}   '
                 breakout += 1
-        categories_description = f'{categories_description}{categories_description_line.rstrip()}\n'
-        index += 1
         if breakout == len(categories_names):
             break
+        categories_description_line = categories_description_line.rstrip()
+        categories_description = f'{categories_description}{categories_description_line}{whitespace*(x_axis_len-len(categories_description_line))}\n'
+        index += 1
 
 
 
     spend_chart_text = f'{title}{y_axis}{x_axis}{categories_description}'
-    print(spend_chart_text)
+    spend_chart_text = spend_chart_text[:-1]
+    return spend_chart_text
